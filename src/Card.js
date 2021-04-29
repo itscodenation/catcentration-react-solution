@@ -17,7 +17,7 @@ const clickedStyle = {
     objectFit: 'cover',
 };
 
-export default function Card({ cardsFlipped, dispatch, flipped, id, matched, src}) {
+export default function Card({ cardsFlipped, catData, dispatch, flipped, id, matched, src}) {
     const [style, setStyle] = useState(unclickedStyle);
 
     function handleClick() {
@@ -30,28 +30,32 @@ export default function Card({ cardsFlipped, dispatch, flipped, id, matched, src
                 type: 'FLIP_CARD',
                 payload: id
             });
+
         }
     }
 
     useEffect(() => {
         if (cardsFlipped.length === 2) {
-            if (cardsFlipped[0].id === cardsFlipped[1].id) {
+            if (catData[cardsFlipped[0]]?.id === catData[cardsFlipped[1]]?.id) {
                 dispatch({
                     type: 'MATCH_CARDS'
                 });
             } else {
-                dispatch({
-                    type: 'FLIP_CARDS_BACK'
-                });
+                setTimeout(() => {
+                    dispatch({
+                        type: 'FLIP_CARDS_BACK'
+                    });
+                    setStyle(unclickedStyle);
+                }, 3000);
             }
         }
-    }, [cardsFlipped, dispatch])
+    }, [cardsFlipped, catData, dispatch]);
 
     if (flipped || matched) {
         return (
             <div>
                 <img
-                    style={style}
+                    style={clickedStyle}
                     src={src}
                     alt={`cat ${id}`}
                 />

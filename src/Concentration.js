@@ -47,12 +47,13 @@ function reducer(state, action) {
         case FLIP_CARDS_BACK:
             cardsFlipped = [...state.cardsFlipped];
             catData = [...state.catData];
-            catToFlip = catData.findIndex((cat, i) => i === action.payload);
-
-            catData[catToFlip].flipped = false;
+            cardsFlipped.forEach(card => {
+              catData[card].flipped = false;
+            });
             newState = {
                 ...state,
-                cardsFlipped: state.cardsFlipped.filter(id => id !== action.payload)
+                catData,
+                cardsFlipped: []
             };
             break;
         case MATCH_CARDS:
@@ -68,7 +69,6 @@ function reducer(state, action) {
                 catData,
                 cardsFlipped
             };
-
             break;
         default:
             newState = {
@@ -77,6 +77,7 @@ function reducer(state, action) {
             break;
     }
 
+    console.log(action.type);
     console.log(newState);
 
     return newState;
@@ -95,6 +96,7 @@ export default function Concentration(props) {
     fetch(catApiUrl, fetchOptions).then((response) => {
       response.json().then((result) => {
         const processedData = processCatData(result);
+        preloadImages(result);
 
         dispatch({
             type: UPDATE_CAT_DATA,
@@ -151,4 +153,13 @@ function processCatData(data) {
   }
 
   return randomizedData;
+}
+
+function preloadImages(data) {
+  data.forEach(cat => {
+    const image = new Image();
+
+    image.src = cat.url;
+    window[cat.url] = image;
+  });
 }

@@ -10,10 +10,11 @@ export default function Row(props) {
             }}
         >
             {
-                props.catData &&
-                props.catData.map((cat, i) =>
+                props.catDataRow &&
+                props.catDataRow.map((cat, i) =>
                     <Card
                         cardsFlipped={props.cardsFlipped}
+                        catData={props.catData}
                         dispatch={props.dispatch}
                         flipped={cat.flipped}
                         id={props.rowIndex + i}

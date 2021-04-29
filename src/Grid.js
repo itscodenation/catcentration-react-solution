@@ -16,25 +16,29 @@ export default function Grid(props) {
         >
             <Row
                 cardsFlipped={props.cardsFlipped}
-                catData={getRowData(1, props.catData)}
+                catData={props.catData}
+                catDataRow={getRowData(1, props.catData)}
                 dispatch={props.dispatch}
                 rowIndex={0}
             />
             <Row
                 cardsFlipped={props.cardsFlipped}
-                catData={getRowData(2, props.catData)}
+                catData={props.catData}
+                catDataRow={getRowData(2, props.catData)}
                 dispatch={props.dispatch}
                 rowIndex={4}
             />
             <Row
                 cardsFlipped={props.cardsFlipped}
-                catData={getRowData(3, props.catData)}
+                catData={props.catData}
+                catDataRow={getRowData(3, props.catData)}
                 dispatch={props.dispatch}
                 rowIndex={8}
             />
             <Row
                 cardsFlipped={props.cardsFlipped}
-                catData={getRowData(4, props.catData)}
+                catData={props.catData}
+                catDataRow={getRowData(4, props.catData)}
                 dispatch={props.dispatch}
                 rowIndex={12}
             />
