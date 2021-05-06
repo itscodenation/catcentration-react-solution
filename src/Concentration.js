@@ -114,6 +114,7 @@ export default function Concentration(props) {
     >
         <Grid
             cardsFlipped={state.cardsFlipped}
+            cardsMatched={state.cardsMatched}
             catData={state.catData}
             dispatch={dispatch}
         />

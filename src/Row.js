@@ -17,6 +17,7 @@ export default function Row(props) {
                 props.catDataRow.map((cat, i) =>
                     <Card
                         cardsFlipped={props.cardsFlipped}
+                        cardsMatched={props.cardsMatched}
                         catData={props.catData}
                         dispatch={props.dispatch}
                         flipped={cat.flipped}

@@ -17,6 +17,7 @@ export default function Grid(props) {
         >
             <Row
                 cardsFlipped={props.cardsFlipped}
+                cardsMatched={props.cardsMatched}
                 catData={props.catData}
                 catDataRow={getRowData(1, props.catData)}
                 dispatch={props.dispatch}
@@ -24,6 +25,7 @@ export default function Grid(props) {
             />
             <Row
                 cardsFlipped={props.cardsFlipped}
+                cardsMatched={props.cardsMatched}
                 catData={props.catData}
                 catDataRow={getRowData(2, props.catData)}
                 dispatch={props.dispatch}
@@ -31,6 +33,7 @@ export default function Grid(props) {
             />
             <Row
                 cardsFlipped={props.cardsFlipped}
+                cardsMatched={props.cardsMatched}
                 catData={props.catData}
                 catDataRow={getRowData(3, props.catData)}
                 dispatch={props.dispatch}
@@ -38,6 +41,7 @@ export default function Grid(props) {
             />
             <Row
                 cardsFlipped={props.cardsFlipped}
+                cardsMatched={props.cardsMatched}
                 catData={props.catData}
                 catDataRow={getRowData(4, props.catData)}
                 dispatch={props.dispatch}
