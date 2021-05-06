@@ -6,7 +6,10 @@ export default function Row(props) {
         <div
             style={{
                 display: 'flex',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '25%',
+                minHeight: '154px'
             }}
         >
             {

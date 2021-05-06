@@ -4,8 +4,8 @@ const logo = 'codenation-logo.png';
 const whiteSquare = 'white180x180.png';
 
 const unclickedStyle = {
-    width: '180px',
-    height: '180px',
+    width: '150px',
+    height: '150px',
     objectFit: 'contain',
     margin: '5px',
     border: '2px solid black',

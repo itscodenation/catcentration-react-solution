@@ -2,8 +2,8 @@ import Concentration from './Concentration';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+      <header>
         <Concentration />
       </header>
     </div>
