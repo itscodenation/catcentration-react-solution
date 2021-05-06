@@ -109,7 +109,7 @@ export default function Concentration(props) {
   return (
     <div
         style={{
-            boxSizing: 'border-box'
+            boxSizing: 'border-box',
         }}
     >
         <Grid

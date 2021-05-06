@@ -10,7 +10,8 @@ export default function Grid(props) {
     return (
         <div
             style={{
-                width: '95%',
+                width: '95vh',
+                height: '95vh',
                 margin: '0 auto'
             }}
         >
