@@ -34,15 +34,6 @@ export default function Card({ cardsFlipped, cardsMatched, catData, dispatch, fl
         }
     }
 
-    function resetGame() {
-        if (cardsMatched.length === 16) {
-            //reset all the state by dispatching an action
-            dispatch({
-                type: 'RESET_GAME'
-            });
-        }
-    }
-
     useEffect(() => {
         if (cardsMatched.length === 16) {
             dispatch({
