@@ -36,13 +36,19 @@ export default function Card({ cardsFlipped, cardsMatched, catData, dispatch, fl
 
     function resetGame() {
         if (cardsMatched.length === 16) {
-            alert("You won! Press OK to restart the game.");
             //reset all the state by dispatching an action
+            dispatch({
+                type: 'RESET_GAME'
+            });
         }
     }
 
     useEffect(() => {
-        if (cardsFlipped.length === 2) {
+        if (cardsMatched.length === 16) {
+            dispatch({
+                type: 'RESET_GAME'
+            });
+        } else if (cardsFlipped.length === 2) {
             if (catData[cardsFlipped[0]]?.id === catData[cardsFlipped[1]]?.id) {
                 dispatch({
                     type: 'MATCH_CARDS'
@@ -56,8 +62,7 @@ export default function Card({ cardsFlipped, cardsMatched, catData, dispatch, fl
                 }, 3000);
             }
         }
-        resetGame();
-    }, [cardsFlipped, catData, dispatch]);
+    }, [cardsFlipped, catData]);
 
     if (flipped || matched) {
         return (
