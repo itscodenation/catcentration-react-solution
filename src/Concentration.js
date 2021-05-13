@@ -8,13 +8,15 @@ const catApiUrl = `https://api.thecatapi.com/v1/images/search?limit=${numberOfCa
 const initialState = {
     cardsFlipped: [],
     cardsMatched: [],
-    catData: null
+    catData: null,
+    gameNumber: 1
 };
 
 const UPDATE_CAT_DATA = 'UPDATE_CAT_DATA';
 const FLIP_CARD = 'FLIP_CARD';
 const FLIP_CARDS_BACK = 'FLIP_CARDS_BACK';
 const MATCH_CARDS = 'MATCH_CARDS';
+const RESET_GAME = 'RESET_GAME';
 
 function reducer(state, action) {
 
@@ -70,11 +72,16 @@ function reducer(state, action) {
                 cardsFlipped
             };
             break;
+        case RESET_GAME:
+            newState = {
+              ...initialState,
+              gameNumber: state.gameNumber + 1
+            };
+            break;
         default:
             newState = {
                 ...state
             }
-            break;
     }
 
     console.log(action.type);
@@ -104,7 +111,7 @@ export default function Concentration(props) {
         });
       });
     });
-  }, []);
+  }, [state.gameNumber]);
 
   return (
     <div
@@ -114,6 +121,7 @@ export default function Concentration(props) {
     >
         <Grid
             cardsFlipped={state.cardsFlipped}
+            cardsMatched={state.cardsMatched}
             catData={state.catData}
             dispatch={dispatch}
         />

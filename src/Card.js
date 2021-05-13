@@ -17,7 +17,7 @@ const clickedStyle = {
     objectFit: 'cover',
 };
 
-export default function Card({ cardsFlipped, catData, dispatch, flipped, id, matched, src}) {
+export default function Card({ cardsFlipped, cardsMatched, catData, dispatch, flipped, id, matched, src}) {
     const [style, setStyle] = useState(unclickedStyle);
 
     function handleClick() {
@@ -35,7 +35,11 @@ export default function Card({ cardsFlipped, catData, dispatch, flipped, id, mat
     }
 
     useEffect(() => {
-        if (cardsFlipped.length === 2) {
+        if (cardsMatched.length === 16) {
+            dispatch({
+                type: 'RESET_GAME'
+            });
+        } else if (cardsFlipped.length === 2) {
             if (catData[cardsFlipped[0]]?.id === catData[cardsFlipped[1]]?.id) {
                 dispatch({
                     type: 'MATCH_CARDS'
@@ -49,7 +53,7 @@ export default function Card({ cardsFlipped, catData, dispatch, flipped, id, mat
                 }, 3000);
             }
         }
-    }, [cardsFlipped, catData, dispatch]);
+    }, [cardsFlipped, catData]);
 
     if (flipped || matched) {
         return (
