@@ -3,9 +3,7 @@ import Concentration from './Concentration';
 function App() {
   return (
     <div>
-      <header>
-        <Concentration />
-      </header>
+      <Concentration />
     </div>
   );
 }

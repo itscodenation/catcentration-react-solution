@@ -35,11 +35,14 @@ export default function Card({ cardsFlipped, cardsMatched, catData, dispatch, fl
     }
 
     useEffect(() => {
-        if (cardsMatched.length === 16) {
+        if ((cardsMatched.length === 16) && (id === cardsMatched[15])) {
             dispatch({
                 type: 'RESET_GAME'
             });
-        } else if (cardsFlipped.length === 2) {
+        } else if (
+            (cardsFlipped.length === 2) &&
+            ((id === cardsFlipped[1]) || (id === cardsFlipped[0]))
+            ) {
             if (catData[cardsFlipped[0]]?.id === catData[cardsFlipped[1]]?.id) {
                 dispatch({
                     type: 'MATCH_CARDS'
