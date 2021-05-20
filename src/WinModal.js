@@ -23,7 +23,7 @@ function WinModal(props) {
     }
     return (
         <div style={style}>
-            <h1>You won!</h1>
+            <h1>You won! You've played {props.gameNumber} games.</h1>
             <button onClick={handleClick}>Click to play again</button>
         </div>
     );

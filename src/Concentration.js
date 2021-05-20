@@ -11,7 +11,6 @@ const initialState = {
     cardsMatched: [],
     catData: null,
     gameNumber: 1,
-    gamesWon: -1,
     showWinModal: false
 };
 
@@ -35,7 +34,6 @@ function reducer(state, action) {
             newState = {
                 ...state,
                 catData: action.payload,
-                gamesWon: state.gamesWon + 1
             };
             break;
         case FLIP_CARD:
@@ -76,7 +74,6 @@ function reducer(state, action) {
         case RESET_GAME:
             newState = {
               ...initialState,
-              gamesWon: state.gamesWon,
               gameNumber: state.gameNumber + 1,
             };
             break;
@@ -129,7 +126,9 @@ export default function Concentration(props) {
     >
         <WinModal 
             show={state.showWinModal}
-            dispatch={dispatch} />
+            dispatch={dispatch}
+            gameNumber={state.gameNumber}
+        />
         <Grid
             cardsFlipped={state.cardsFlipped}
             cardsMatched={state.cardsMatched}
