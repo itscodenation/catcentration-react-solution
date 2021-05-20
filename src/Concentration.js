@@ -9,7 +9,8 @@ const initialState = {
     cardsFlipped: [],
     cardsMatched: [],
     catData: null,
-    gameNumber: 1
+    gameNumber: 1,
+    gamesWon: -1
 };
 
 const UPDATE_CAT_DATA = 'UPDATE_CAT_DATA';
@@ -30,7 +31,8 @@ function reducer(state, action) {
         case UPDATE_CAT_DATA:
             newState = {
                 ...state,
-                catData: action.payload
+                catData: action.payload,
+                gamesWon: state.gamesWon + 1
             };
             break;
         case FLIP_CARD:
@@ -61,20 +63,17 @@ function reducer(state, action) {
         case MATCH_CARDS:
             cardsMatched = [...state.cardsMatched, ...state.cardsFlipped];
             catData = [...state.catData];
-            state.cardsFlipped.forEach(i => {
-                catData[i].matched = true;
-            });
-            cardsFlipped = [];
             newState = {
                 ...state,
                 cardsMatched,
                 catData,
-                cardsFlipped
+                cardsFlipped: []
             };
             break;
         case RESET_GAME:
             newState = {
               ...initialState,
+              gamesWon: state.gamesWon,
               gameNumber: state.gameNumber + 1
             };
             break;
