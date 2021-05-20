@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
 import Grid from './Grid';
+import WinModal from './WinModal';
 
 const numberOfCats = 8;
 const catApiKey = 'e7e0b9dd-9a5a-4061-bbf9-dd0b575e8945';
@@ -10,7 +11,7 @@ const initialState = {
     cardsMatched: [],
     catData: null,
     gameNumber: 1,
-    gamesWon: -1
+    showWinModal: false
 };
 
 const UPDATE_CAT_DATA = 'UPDATE_CAT_DATA';
@@ -18,6 +19,7 @@ const FLIP_CARD = 'FLIP_CARD';
 const FLIP_CARDS_BACK = 'FLIP_CARDS_BACK';
 const MATCH_CARDS = 'MATCH_CARDS';
 const RESET_GAME = 'RESET_GAME';
+const SHOW_WIN_MODAL = 'SHOW_WIN_MODAL';
 
 function reducer(state, action) {
 
@@ -32,7 +34,6 @@ function reducer(state, action) {
             newState = {
                 ...state,
                 catData: action.payload,
-                gamesWon: state.gamesWon + 1
             };
             break;
         case FLIP_CARD:
@@ -73,8 +74,13 @@ function reducer(state, action) {
         case RESET_GAME:
             newState = {
               ...initialState,
-              gamesWon: state.gamesWon,
-              gameNumber: state.gameNumber + 1
+              gameNumber: state.gameNumber + 1,
+            };
+            break;
+        case SHOW_WIN_MODAL:
+            newState = {
+              ...state,
+              showWinModal: true
             };
             break;
         default:
@@ -118,6 +124,11 @@ export default function Concentration(props) {
             boxSizing: 'border-box',
         }}
     >
+        <WinModal 
+            show={state.showWinModal}
+            dispatch={dispatch}
+            gameNumber={state.gameNumber}
+        />
         <Grid
             cardsFlipped={state.cardsFlipped}
             cardsMatched={state.cardsMatched}

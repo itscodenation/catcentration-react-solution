@@ -37,7 +37,7 @@ export default function Card({ cardsFlipped, cardsMatched, catData, dispatch, fl
     useEffect(() => {
         if ((cardsMatched.length === 16) && (id === cardsMatched[15])) {
             dispatch({
-                type: 'RESET_GAME'
+                type: 'SHOW_WIN_MODAL'
             });
         } else if (
             (cardsFlipped.length === 2) &&
