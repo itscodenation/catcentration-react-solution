@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const logo = 'codenation-logo.png';
+const meow = new Audio('meow.mp3');
 
 const unclickedStyle = {
     width: '150px',
@@ -43,6 +44,7 @@ export default function Card({ cardsFlipped, cardsMatched, catData, dispatch, fl
             ((id === cardsFlipped[1]) || (id === cardsFlipped[0]))
             ) {
             if (catData[cardsFlipped[0]]?.id === catData[cardsFlipped[1]]?.id) {
+                meow.play();
                 dispatch({
                     type: 'MATCH_CARDS'
                 });
