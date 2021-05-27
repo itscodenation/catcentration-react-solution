@@ -89,9 +89,6 @@ function reducer(state, action) {
             }
     }
 
-    console.log(action.type);
-    console.log(newState);
-
     return newState;
 }
 

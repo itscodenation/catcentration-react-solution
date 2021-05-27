@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 const logo = 'codenation-logo.png';
-const whiteSquare = 'white180x180.png';
 
 const unclickedStyle = {
     width: '150px',
