@@ -77,9 +77,6 @@ function reducer(state, action) {
             break;
     }
 
-    console.log(action.type);
-    console.log(newState);
-
     return newState;
 }
 
